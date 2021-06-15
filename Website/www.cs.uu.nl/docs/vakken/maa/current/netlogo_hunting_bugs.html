@@ -1,0 +1,128 @@
+<HTML>
+
+
+<!-- Mirrored from www.cs.uu.nl/docs/vakken/maa/current/netlogo_hunting_bugs.php by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Jun 2021 07:59:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>&nbsp;Multi-agent learning</TITLE>
+   <LINK href="maa.css" rel="stylesheet" type="text/css">
+   <LINK rel="SHORTCUT ICON" href="maa.ico"/>
+   <SCRIPT src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></SCRIPT>
+   <SCRIPT src="js/jquery.jslatex.js"></SCRIPT>
+</HEAD>
+
+<BODY>
+
+<TABLE class="header" border="0" cellpadding="0" cellspacing="0" width="100%">
+   <TR valign="top">
+      <TD>
+               </TD>
+      <TD align="right">
+   <A class="invisible" href="http://www.cs.uu.nl/docs/vakken/maa/2019-20/netlogo_hunting_bugs.php" target="main">Edition 2019-20</A>         Edition 2020-21      </TD>
+   </TR>
+</TABLE>
+
+<H1>Demo</H1>
+
+<P>
+<applet code="org.nlogo.lite.Applet.html"
+        archive="netlogo/NetLogoLite.jar"
+        width="1081" height="581">
+  <param name="DefaultModel"
+         value="netlogo/HuntingBugs.nlogo">
+</applet>
+</P>
+
+ If the demo isn't visible or won't run, this probably is due to new Java applet security restrictions or to the fact that some browsers simply have stopped supporting Java (Firefox 64-bit).  You may open the Java configuration control panel and add our server to the exception list, and/or try opening the demo in another browser (for example 32-bit FF).  More detailed instructions can be found <A href="https://www.google.nl/search?q=how+to+allow+Java+on+my+browser" target="_blank">here</A>. As a last resort, you may <A href="http://ccl.northwestern.edu/netlogo/4.1.3/" target="_blank">download Netlogo 4.1.3</A>, download the <A href="netlogo/HuntingBugs.nlogo" target="_blank">source of the demo</A>, and run it in you local copy of Netlogo.
+&copy; Gerard Vreeswijk, 2010.</P>
+
+ <H5>WHAT IS IT?</H5>
+<P>
+Bugs live on a torus and have, depending on the value of "attraction", either the objective to meet each other ("attraction" = 1) or to avoid each other, i.e. stay out of each other's way ("attraction" = -1).  They do so by watching the location of other bugs and then turn left or right based on the observed location of these other bugs.  The problem is that adaptation is based on locations of bugs that are in the process of adaptation themselves.
+</P>
+<H5>WHY?</H5>
+<P>
+For a master course on adaptive agents I was thinking of a very simple example that I could begin the course with.  This example should demonstrate, above all, typical behavior of agents that adapt their behaviour to other agents that are themselves in the same process of adaptation.
+</P>
+<P>
+After I constructed the program, I realised that it is a simple instance of an N-type pursuit (a = 1) or avoidance (a = -1) game.  Pursuit and avoidance games are instances of so-called differential games.  Books on differential games are written among others by Isaacs (1965), Friedman (1971), and Hajek (1975).  I think by then dg's were hot because of research in military warfare stimulated by the cold war (1945-1989).  Could be.
+</P>
+<H5>SIMPLICITY</H5>
+<P>
+The challenge partially was to find one of the most simple examples.  An even simpler example would be to put bugs on the unit circle, but then bug traces would be difficult to see.   (Bugs frequently re-visit locations in 1D.)  The unit interval (bounded 1D) is not suitable, because boundaries would influence avoidance behaviour.  Also, the real line (unbounded 1D) is not suitable, because the absence of boundaries would enable simple avoidance behaviour.  (Simply flee away to infinity.)
+</P>
+<H5>HOW IT WORKS</H5>
+<P>
+A bug moves as follows: 1) determine location of other bugs 2) based on this observation, turn left "turn-degree" degrees or turn right "turn-degrees" degrees.  3) Move forward "step-size".
+</P>
+<H5>OTHER BUGS</H5>
+<P>
+The set named "other bugs" is determined as follows.  Depending on the value of "number-closest-to-adapt-to", let's call this N, a bug determines the location of its N closest neighbours.  N may vary from 1 to the total number of bugs - 1.  Thus, if "number-closest-to-adapt-to" = N = 3, a bug determines the location of its three closest neighbours.  Then the centroid (center of gravity, middle point) of these N bugs is determined.  This centroid (depicted in the form of a target) will be point of direction for the present bug.  If the centroid is on the left to the present bug, and the objective is to meet other bugs, then the bug will turn left.  Similarly, if the centroid is on the left to the present bug, and the objective is to avoid other bugs, then the bug will turn right.
+</P>
+<P>
+The "adapt-to-all-others" switch is a shortcut to "number-closest-to-adapt-to" := number of other turtles.
+</P>
+<P>
+The "neighbourhood" slider is to set a neighborhood in attraction scenarios.  If "neighbourhood" is set to, say 1.141, then neighbours within 1.141 crow distance are considered to be on the same location and are ignored in the determination of the N closest neighbours.  This is to avoid adaptation to neighbours that may already be considered to be on the same location.  If "neighbourhood" is set to 0 in attraction scenarios, then N = 1 would cause bugs to adapt in pairs and ignore the rest.  The value SQRT(2) = 1.141 is a good value, because it respects the patch size of the simulation.
+</P>
+<H5>CENTROID ON A TORUS</H5>
+<P>
+In 2D, i.e. the plane, the centroid of N points is clearly defined.  I.e., the average of (1, 3), (2, 5) and (-1, 6) is ((1+2-1)/3, (3+5+6)/3).  The centroid of N points on a torus is defined similarly, but we will have to take notice that nearness and direction on a torus are of course defined differently.
+</P>
+<P>
+To understand how the concept of a centroid on a torus is defined, let's move down one dimension lower to the unit circle.  Let the degrees stand for directions of wind.  You receive two wind directions, and then you'll have to report an average wind direction.  The set { 120, 122 } is a clear case, you'd most probably report 121 as an average.  But what about the set { 0, 180 }?  The number 90 is not the right answer, because then -90 or 270 equally well would be.  Probably the best answer is to remain undecisive here.  The wind is blowing from two totally opposite directions, so you simply can't tell.
+</P>
+<P>
+The average of two (or more) directions is computed by representing degrees as vectors on a circle, and then add the vectors.  Then map the sum of the vectors back to the circle, that is your average.  The certainy factor of this average is the length of the sum vector.  If the vectors point in different directions, the certainty factor is low; the certainty factor is 1 if and only if all vectors point in the same direction.
+</P>
+<P>
+Now generalise to the torus and we are done.
+</P>
+<H5>TO DO</H5>
+<P>
+Implement decay factor.  The decay factor should cause bugs to slow down when they are in the neighborhood of their goal.
+</P>
+<H5>THINGS TO NOTICE</H5>
+<P>
+This section could give some ideas of things for the user to notice while running the model.
+</P>
+<H5>THINGS TO TRY</H5>
+<P>
+This section could give some ideas of things for the user to try to do (move sliders, switches, etc.) with the model.
+</P>
+<H5>EXTENDING THE MODEL</H5>
+<P>
+This section could give some ideas of things to add or change in the procedures tab to make the model more complicated, detailed, accurate, etc.
+</P>
+<H5>NETLOGO FEATURES</H5>
+<P>
+This section could point out any especially interesting or unusual features of NetLogo that the model makes use of, particularly in the Procedures tab.  It might also point out places where workarounds were needed because of missing features.
+</P>
+<H5>RELATED MODELS</H5>
+<P>
+This section could give the names of models in the NetLogo Models Library or elsewhere which are of related interest.
+</P>
+<H5>CREDITS AND REFERENCES</H5>
+<P>
+Gerard Vreeswijk (c) 2009.
+</P>
+
+
+<P>
+<FORM>
+<TABLE class="footer" cellpadding="0" cellspacing="0" width="100%">
+   <TR valign="top">
+      <TD>
+         Page last modified at Thu, 24 Apr 2014 22:13:46 +02001      </TD>
+            <TD align="right">
+         <A href="mailto:&quot;Gerard Vreeswijk&quot; &lt;gv@cs.uu.nl&gt;?subject=/science/wwwprojects/cs-www/www/docs/vakken/maa/current/netlogo_hunting_bugs.php">Comments welcome</A>
+      </TD>
+         </TR>
+</TABLE>
+</FORM>
+</P>
+</BODY>
+
+<!-- Mirrored from www.cs.uu.nl/docs/vakken/maa/current/netlogo_hunting_bugs.php by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Jun 2021 07:59:50 GMT -->
+</HTML>
+

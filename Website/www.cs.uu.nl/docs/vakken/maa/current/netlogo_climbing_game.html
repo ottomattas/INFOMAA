@@ -1,0 +1,115 @@
+<HTML>
+
+
+<!-- Mirrored from www.cs.uu.nl/docs/vakken/maa/current/netlogo_climbing_game.php by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Jun 2021 08:01:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>&nbsp;Multi-agent learning</TITLE>
+   <LINK href="maa.css" rel="stylesheet" type="text/css">
+   <LINK rel="SHORTCUT ICON" href="maa.ico"/>
+   <SCRIPT src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></SCRIPT>
+   <SCRIPT src="js/jquery.jslatex.js"></SCRIPT>
+</HEAD>
+
+<BODY>
+
+<TABLE class="header" border="0" cellpadding="0" cellspacing="0" width="100%">
+   <TR valign="top">
+      <TD>
+               </TD>
+      <TD align="right">
+   <A class="invisible" href="http://www.cs.uu.nl/docs/vakken/maa/2019-20/netlogo_climbing_game.php" target="main">Edition 2019-20</A>         Edition 2020-21      </TD>
+   </TR>
+</TABLE>
+
+<H1>Demo</H1>
+
+<P>
+<applet code="org.nlogo.lite.Applet.html"
+        archive="netlogo/NetLogoLite.jar"
+        width="762" height="481">
+  <param name="DefaultModel"
+         value="netlogo/TheClimbingGame.nlogo">
+</applet>
+</P>
+
+<H2>The climbing game</H2>
+<P>
+As discussed in article &ldquo;The Dynamics of Reinforcement Learning in Cooperative Multiagent Systems&rdquo; by Claus and Boutilier.
+If the demo isn't visible or won't run, this probably is due to new Java applet security restrictions or to the fact that some browsers simply have stopped supporting Java (Firefox 64-bit).  You may open the Java configuration control panel and add our server to the exception list, and/or try opening the demo in another browser (for example 32-bit FF).  More detailed instructions can be found <A href="https://www.google.nl/search?q=how+to+allow+Java+on+my+browser" target="_blank">here</A>. As a last resort, you may <A href="http://ccl.northwestern.edu/netlogo/4.1.3/" target="_blank">download Netlogo 4.1.3</A>, download the <A href="netlogo/TheClimbingGame.nlogo" target="_blank">source of the demo</A>, and run it in you local copy of Netlogo.
+&copy; Vincent Menger, 2009.
+</P>
+
+<H5>WAT IS HET?</H5>
+<P>
+Dit model heet 'the climbing game'. Het bestaat uit twee agents die drie keuzes krijgen. Voor elke combinatie van keuzes is er een andere beloning variërend van -30 tot 11. De twee agents zijn links (blauw) en boven (rood) gemodelleerd als pijlen. Een derde agent, het gele blok, selecteert de juiste payoffwaarde in de 3x3 matrix.
+</P>
+<H5>HOE WERKT HET?</H5>
+<P>
+Als de simulatie begint krijgen de agents steeds drie keuzes. Intern houden ze Q-waarden bij voor deze drie keuzes, en kiezen aan de hand van deze Q-waarde.
+</P>
+<H5>HOE TE GEBRUIKEN?</H5>
+<P>
+Om te beginnen druk je op de setup-button. Een nieuw veld wordt gemaakt met de drie agents en de matrix. Klik op de bovenste Go button om de simulatie te starten of op de andere Go button om één stap vooruit te gaan. Daarnaast is er een exploratie-knop om de agents éénmaal willekeurig te laten kiezen.
+</P>
+<H5>IN TE STELLEN</H5>
+<P>
+- Leersnelheid, de leersnelheid.
+</P>
+<P>
+- Exploratie, de exploratie.
+</P>
+<P>
+- Middelen, het aantal stappen waarover de agents hun Q-waarden moeten middelen
+</P>
+<P>
+- Stategieën: Er zijn twee strategieën. Ten eerste Epsilon-greedy, waarbij de Q-waarden op 0 geïnitialiseerd worden en de agents de actie met de hoogste Q-waarde kiezen, uitgezonderd een bepaald exploratie-percentage (in te stellen met de slider). De andere strategie is Optimistic-greedy, waarbij de Q-waarden op 100 worden geïnitialiseerd en vervolgens altijd de actie met de hoogste Q-waarde wordt gekozen.
+</P>
+<H5>VRAAG 1: KLIMGEDRAG MET EPSILON-GREEDY</H5>
+<P>
+In het begin lijkt het klimgedrag redelijk willekeurig, na een tijdje wordt dit stabiel: vaak kiezen beide agents actie 3 (payoff 5) of actie 2 (payoff 7). Deze twee acties lijken het meest veilig te zijn. Af en toe kiezen ze een tijdje allebei voor actie 1 (payoff 11) maar dit lijkt meestal niet lang te duren. Een lagere exploratiefactor zorgt logischerwijs voor meer stabiliteit. De leersnelheid lijkt niet veel invloed te hebben.
+</P>
+<H5>VRAAG 2: KLIMGEDRAG MET OPTIMISTIC-GREEDY</H5>
+<P>
+De agents vertonen hier duidelijk ander gedrag. Bij een lage leersnelheid veranderen de keuzes zeer regelmatig en eindigt de situatie vaak stabiel met de ideale situatie a1-a1. Met een hoge leersnelheid eindigt de situatie vaak stabiel maar de toestand waarin varieert: vaak wel eentje met payoff 5,6,7 of 11.
+</P>
+<H5>VRAAG 3: EXPLORATIE BIJ OPTIMISTIC-GREEDY</H5>
+<P>
+De Q-waardes bij optimistic-greedy worden hoog geinitialiseerd. Dat betekent dat ze in het begin slechts zullen dalen. Als een actie de hoogste Q-waarde heeft zal deze gekozen worden en elke keer wordt de Q-waarde lager tot dat een andere actie een lagere waarde heeft, dan wordt die actie gekozen. Zo wordt er steeds gevarieerd in keuze.
+</P>
+<H5>VRAAG 4: VOORKEUR VOOR STRATEGIE</H5>
+<P>
+Voor mij heeft de optimistic-greedy strategie een voorkeur, en dan wel met een lage leersnelheid, omdat deze het vaker naar een a1-a1 stabiele situatie leidt.
+</P>
+<H5>VRAAG 5: INVLOED KENNIS ANDERE AGENT</H5>
+<P>
+Ja, ik zou het probleem anders aanpaken door de agents ook op te laten slaan welke actie van de andere agent welke beloning geeft in combinatie met hun eigen actie.
+</P>
+<H5>VRAAG 6: ANDERE MOGELIJKHEDEN</H5>
+<P>
+Een mogelijkheid zou zijn om de agents (bijvoorbeeld) de eerste 100 stappen willekeurig te laten kiezen, en daarna voor altijd de actie die ze éénmaal de hoogste beloning heeft gegeven te laten kiezen. Op die manier zullen ze na de 100 willekeurige acties automatisch allebei actie 1 kiezen.
+</P>
+<H5>GEMAAKT DOOR</H5>
+<P>
+Vincent Menger, 2009.
+</P>
+
+
+<P>
+<FORM>
+<TABLE class="footer" cellpadding="0" cellspacing="0" width="100%">
+   <TR valign="top">
+      <TD>
+         Page last modified at Thu, 24 Apr 2014 22:03:41 +02001      </TD>
+            <TD align="right">
+         <A href="mailto:&quot;Gerard Vreeswijk&quot; &lt;gv@cs.uu.nl&gt;?subject=/science/wwwprojects/cs-www/www/docs/vakken/maa/current/netlogo_climbing_game.php">Comments welcome</A>
+      </TD>
+         </TR>
+</TABLE>
+</FORM>
+</P>
+</BODY>
+
+<!-- Mirrored from www.cs.uu.nl/docs/vakken/maa/current/netlogo_climbing_game.php by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Jun 2021 08:01:08 GMT -->
+</HTML>
+

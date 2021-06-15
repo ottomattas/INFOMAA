@@ -1,0 +1,8 @@
+http://www.cs.uu.nl/docs/vakken/maa/current/ %O +http://www.cs.uu.nl/docs/vakken/maa/current/* -v
+File generated automatically on Tue, 15 Jun 2021 09:24:00, do NOT edit
+
+To update a mirror, just launch httrack without any parameters
+The existing cache will be used (and modified)
+To have other options, retype all parameters and launch HTTrack
+To continue an interrupted mirror, just launch httrack without any parameters
+

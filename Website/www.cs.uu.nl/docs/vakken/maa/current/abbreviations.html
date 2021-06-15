@@ -1,0 +1,203 @@
+<HTML>
+
+
+<!-- Mirrored from www.cs.uu.nl/docs/vakken/maa/current/abbreviations.php by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Jun 2021 07:59:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>&nbsp;Multi-agent learning</TITLE>
+   <LINK href="maa.css" rel="stylesheet" type="text/css">
+   <LINK rel="SHORTCUT ICON" href="maa.ico"/>
+   <SCRIPT src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></SCRIPT>
+   <SCRIPT src="js/jquery.jslatex.js"></SCRIPT>
+</HEAD>
+
+<BODY>
+
+<TABLE class="header" border="0" cellpadding="0" cellspacing="0" width="100%">
+   <TR valign="top">
+      <TD>
+               </TD>
+      <TD align="right">
+   <A class="invisible" href="http://www.cs.uu.nl/docs/vakken/maa/2019-20/abbreviations.php" target="main">Edition 2019-20</A>         Edition 2020-21      </TD>
+   </TR>
+</TABLE>
+<STYLE TYPE="text/css">
+I {
+  font-style: normal;
+  font-weight: normal;
+  color: #000099;
+}
+</STYLE>
+
+<H1>Abbreviations</H1>
+
+<H2>Probability</H2>
+<P>
+<TABLE border="0" cellpadding="3" cellspacing="2">
+   <TR valign="top">
+      <TD align="right">r.v.</TD><TD><I>random variable</I></TD>
+      <TD>
+         A variable that assumes random values.  Often we assume that a r.v. is coupled to a (discrete) p.f. or a (continuous) p.d.f.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">r.v.s.</TD><TD><I>random variables</I></TD>
+      <TD>
+         A (possibly infinite) set of random variables.  Example: &ldquo;Let <I>X<SUB>i</SUB></I> be a sequence of i.i.d. r.v.s.&rdquo;
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">p.f.</TD><TD><I>probability function</I></TD>
+      <TD>
+         A function from the range (set of possible values) of a discrete random variable to <I>[0,1]</I>, such that its values sum to one.  We write <I>f(x) = P{ X=x }</I>.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">p.d.</TD><TD><I>probability distribution</I></TD>
+      <TD>
+         The same.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">p.d.f.</TD><TD><I>probability density function</I></TD>
+      <TD>
+         A function from the range (set of possible values) of a continuous random variable to <I>[0,1]</I>.  This function must integrate to one.  We write <I>&int;<SUB>A</SUB> f(x) = P{ x&isin;A }</I>.  It follows that <I>f(x) = P{ X=x } = 0</I>, for all <I>x</I>.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">c.d.f.</TD><TD><I>cumulative distribution function</I></TD>
+      <TD>
+         A function from the range (set of possible values) of a random variable to <I>[0,1]</I> that is monotone non-decreasing and continuous from the right.  We write <I>F(x) = P{ X&le;x }</I>.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">d.f.</TD><TD><I>distribution function</I></TD>
+      <TD>
+         The same.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">c.f.</TD><TD><I>characteristic function</I></TD>
+      <TD>
+         The c.f. <I>&chi;<SUB>A</SUB></I> of <I>A</I> is <I>1</I> on <I>A</I> and <I>0</I> elsewhere.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">u.i.</TD><TD><I>uniformly integrable</I></TD>
+      <TD>
+         A nice property on a set of random variables, sufficient for certain for results on convergence.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">i.o.</TD><TD><I>infinitely often</I></TD>
+      <TD>
+         Well, just what the man says: infinitely often!
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">a.s.</TD><TD><I>almost surely</I></TD>
+      <TD>
+         A statement or property that holds with probability one.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">a.c.</TD><TD><I>almost certainly</I></TD>
+      <TD>
+         The same.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">a.e.</TD><TD><I>almost everywhere</I></TD>
+      <TD>
+         A statement or property that holds everywhere except on a subset of measure zero.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">i.d.</TD><TD><I>infinitely divisible</I></TD>
+      <TD>
+         A c.d.f. is infinitely divisible if its c.f. is the <I>n</I>th power of a c.f. <I>f<SUB>n</SUB></I>, for every <I>n</I>.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">i.i.d.</TD><TD><I>independent and identically distributed</I></TD>
+      <TD>
+         A set of random variables is i.i.d. if they are coupled to the same d.f. and are assumed to be independent.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">CLT</TD><TD><I>central limit theorem</I></TD>
+      <TD>
+         (Lindeberg-Levy version): the average of a large number of i.i.d. r.v.s. approximates the normal distribution.  How fast?  One rate of convergence is given by Berry-Ess&eacute;en.  (The CLT implies the WLLN.)
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">WLLN</TD><TD><I>weak law of large numbers</I></TD>
+      <TD>
+         With arbitrary high probability, the average of a large enough number of i.i.d. r.v.s. lies arbitrary close to the mean: <I><FONT style="text-decoration: overline;">X</FONT><SUB>n</SUB> &rarr;<SUB>P</SUB> X</I>.
+         More concretely: for every small <I>&epsilon;&gt;0</I>, the probability that the average of a large number of dice throws differs less than <I>&epsilon;</I> from <I>3.5</I> converges to <I>1</I>.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">SLLN</TD><TD><I>strong law of large numbers</I></TD>
+      <TD>
+         The average of a large number of i.i.d. r.v.s. approximates the mean a.s.: <I><FONT style="text-decoration: overline;">X</FONT><SUB>n</SUB> &rarr;<SUB>a.s.</SUB> X</I>.  More concretely: if you throw a dice, then the average will converge to <I>3.5</I> with probability <I>1</I>.  (The last statement cannot be made with WLLN.)
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">LIL</TD><TD><I>law of the iterated logarithm</I></TD>
+      <TD>
+         Describes the magnitude of the fluctuations of a random walk.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right">m.g.f.</TD><TD><I>moment generating function</I></TD>
+      <TD>
+         Another way to define the p.d. of a random variable, involving powers of <I>e</I>.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right"><I>&rarr;<SUB>d</SUB></I></TD><TD><I>convergence in distribution</I></TD>
+      <TD>
+         Pointwise converge of associated p.d.f.'s .
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right"><I>&rarr;<SUB>P</SUB></I></TD><TD><I>convergence in probability</I></TD>
+      <TD>
+         Probability that terms remain within any pre-specified level of accuracy from the limit r.v. tends to one.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right"><I>&rarr;<SUB>a.s.</SUB></I></TD><TD><I>convergence almost surely</I></TD>
+      <TD>
+         Convergence with probability one.
+      </TD>
+   </TR>
+   <TR valign="top">
+      <TD align="right"><I>&rarr;<SUB>L1</SUB></I></TD><TD><I>convergence in mean</I></TD>
+      <TD>
+         Expected difference between term and limit r.v.s. tends to zero.
+      </TD>
+   </TR>
+</TABLE>
+</P>
+
+
+<P>
+<FORM>
+<TABLE class="footer" cellpadding="0" cellspacing="0" width="100%">
+   <TR valign="top">
+      <TD>
+         Page last modified at Wed, 02 Apr 2014 16:58:18 +02001      </TD>
+            <TD align="right">
+         <A href="mailto:&quot;Gerard Vreeswijk&quot; &lt;gv@cs.uu.nl&gt;?subject=/science/wwwprojects/cs-www/www/docs/vakken/maa/current/abbreviations.php">Comments welcome</A>
+      </TD>
+         </TR>
+</TABLE>
+</FORM>
+</P>
+</BODY>
+
+<!-- Mirrored from www.cs.uu.nl/docs/vakken/maa/current/abbreviations.php by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Jun 2021 07:59:31 GMT -->
+</HTML>
+

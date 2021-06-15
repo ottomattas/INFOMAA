@@ -1,0 +1,128 @@
+<HTML>
+
+
+<!-- Mirrored from www.cs.uu.nl/docs/vakken/maa/current/netlogo_fictitious_play.php by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Jun 2021 08:00:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>&nbsp;Multi-agent learning</TITLE>
+   <LINK href="maa.css" rel="stylesheet" type="text/css">
+   <LINK rel="SHORTCUT ICON" href="maa.ico"/>
+   <SCRIPT src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></SCRIPT>
+   <SCRIPT src="js/jquery.jslatex.js"></SCRIPT>
+</HEAD>
+
+<BODY>
+
+<TABLE class="header" border="0" cellpadding="0" cellspacing="0" width="100%">
+   <TR valign="top">
+      <TD>
+               </TD>
+      <TD align="right">
+   <A class="invisible" href="http://www.cs.uu.nl/docs/vakken/maa/2019-20/netlogo_fictitious_play.php" target="main">Edition 2019-20</A>         Edition 2020-21      </TD>
+   </TR>
+</TABLE>
+
+<H1>Demo</H1>
+
+<P>
+<applet code="org.nlogo.lite.Applet.html"
+        archive="netlogo/NetLogoLite.jar"
+        width="1451" height="557">
+  <param name="DefaultModel"
+         value="netlogo/FictitiousPlay.nlogo">
+</applet>
+</P>
+
+<H2>Fictitious play</H2>
+<P>
+
+If the demo isn't visible or won't run, this probably is due to new Java applet security restrictions or to the fact that some browsers simply have stopped supporting Java (Firefox 64-bit).  You may open the Java configuration control panel and add our server to the exception list, and/or try opening the demo in another browser (for example 32-bit FF).  More detailed instructions can be found <A href="https://www.google.nl/search?q=how+to+allow+Java+on+my+browser" target="_blank">here</A>. As a last resort, you may <A href="http://ccl.northwestern.edu/netlogo/4.1.3/" target="_blank">download Netlogo 4.1.3</A>, download the <A href="netlogo/SlimeBlob.nlogo" target="_blank">source of the demo</A>, and run it in you local copy of Netlogo.
+&copy; Gerard Vreeswijk, 2014.
+</P>
+
+<H5>WHAT IS IT?</H5>
+<P>
+Basic idea: let two players execute fictitious play on a 3x3 stage game.  Row player is yellow, column player is green.
+</P>
+<P>
+For an interesting graphic effect this basic setup is extended as follows.  Instead of two players there are many player couples yellow/green (row/col), all connected by a grey line to indicate they are a couple.
+</P>
+<P>
+In fictitious play it is impossible to start with zero initial empirical frequencies, on the pain of dividing by zero.  Therefore each player receives at the outset an a-priori distribution of absolute frequencies of opponent actions.  If for example initial-frequency-step = 10 and max-initial-frequency = 100, then row players will be created with empirical frequnecty distributions of [f1, f2, f3], where f1, f2, and f3 are multiples of 10 and have 100 as their highest value.  In this case, that would give 11^3 = 1331 different initial absolute frequency profiles, and that many different row players will be created.  Similarly for column players.  Coupling does not take notice of initial frequencies.
+</P>
+<P>
+For display purposes, absolute frequency profiles are normalised to relative frequency profiles and displayed in a 2-dimensional simplex.  That's the triangle where you are looking at.
+</P>
+<H5>TRIANGLE</H5>
+<P>
+A player's place in the trangle indicates the observed empirical frequencies of its opponent (the play which it is coupled with).  For example, a player in the top of the triangle may have observed empirical frequencies [3 7 212]. A player in the lower left corner of the triangle may have observed empirical frequencies [331 4 6].   A player in the lower right corner may have observed empirical frequencies [2 721 9].
+</P>
+<P>
+Inspect profiles is a first activity you can do.
+</P>
+<H5>INSPECT PROFILES</H5>
+<P>
+To read off profile distributions yourself, initialise randomly (hit "random"), then hit "inspect-profiles".  Then click on various player profiles (yellow/green dots).  If you do not see yellow dots, this is because they are initially hidden under the green dots.  Do you understand what is printed in the output pane?
+</P>
+<P>
+Let the model run for a short time (hit "go", then quickly hit "go" again).  You see that row profiles (yellow dots) become visible.  Click on them to see their (by now changed) profile.
+</P>
+<H5>PAYOFF MATRICES</H5>
+<P>
+Matrix input is symmetrical, so values of column player must be read top down.   Left-under is action 1 ("Top" for row player, "Left" for col player), right under is action 2 ("Middle" for row; "Center" for col).
+</P>
+<H5>MEAN_ROW MEAN-COL</H5>
+<P>
+These indicate the average weight of each action.  For example, "mean-row-0" displays the average probability with which the yellow players (row) choose action 0.  The graphs display these averages.  Red: row-0; blue: row-1; what remains is row-2.  Green: col-0; brown: col-1; what remains is col-2.
+</P>
+<H5>PERSISTENCE OF MEMORY</H5>
+<P>
+Persistence of memory denotes a factor with which empirical frequencies are multiplied every round.  For normal fictitious play this facor is 1.0.
+</P>
+<H5>NO TRACE AFTER X ROUNDS</H5>
+<P>
+No trace after X rounds ensures that animation is not cluttered by traces in later rounds. Plot is a so-called ternary plot.
+</P>
+<H5>HOW TO USE IT</H5>
+<P>
+This section could explain how to use the model, including a description of each of the items in the interface tab.
+</P>
+<H5>THINGS TO NOTICE</H5>
+<P>
+Hit "random" then "go". Do you see how different couples converges?  Sometimes they converge to the same observed play.  Sometimes they do not.
+</P>
+<H5>THINGS TO TRY</H5>
+<P>
+Hit "chaos 1" then "go".  The profiles do not seem to converge but instead move around in a chaotic pattern.
+</P>
+<P>
+Hit "Shapley" then "go".  The dynamics is cyclic, thanks to the payoffs in Shapley's game. (Hit "print-game-matrix" if necessary.)
+</P>
+<H5>SPECTACULAR</H5>
+<P>
+When Shapley runs and persistance of memory is varied, interesting things happen.  Try!  Can you explain?
+</P>
+<H5>CREDITS AND REFERENCES</H5>
+<P>
+Gerard Vreeswijk (c) 2014.
+</P>
+
+
+<P>
+<FORM>
+<TABLE class="footer" cellpadding="0" cellspacing="0" width="100%">
+   <TR valign="top">
+      <TD>
+         Page last modified at Thu, 24 Apr 2014 22:14:18 +02001      </TD>
+            <TD align="right">
+         <A href="mailto:&quot;Gerard Vreeswijk&quot; &lt;gv@cs.uu.nl&gt;?subject=/science/wwwprojects/cs-www/www/docs/vakken/maa/current/netlogo_fictitious_play.php">Comments welcome</A>
+      </TD>
+         </TR>
+</TABLE>
+</FORM>
+</P>
+</BODY>
+
+<!-- Mirrored from www.cs.uu.nl/docs/vakken/maa/current/netlogo_fictitious_play.php by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Jun 2021 08:00:22 GMT -->
+</HTML>
+

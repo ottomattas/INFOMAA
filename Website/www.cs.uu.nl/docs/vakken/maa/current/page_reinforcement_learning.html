@@ -1,0 +1,105 @@
+<HTML>
+
+
+<!-- Mirrored from www.cs.uu.nl/docs/vakken/maa/current/page_reinforcement_learning.php by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Jun 2021 07:38:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>&nbsp;Multi-agent learning</TITLE>
+   <LINK href="maa.css" rel="stylesheet" type="text/css">
+   <LINK rel="SHORTCUT ICON" href="maa.ico"/>
+   <SCRIPT src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></SCRIPT>
+   <SCRIPT src="js/jquery.jslatex.js"></SCRIPT>
+</HEAD>
+
+<BODY>
+
+<TABLE class="header" border="0" cellpadding="0" cellspacing="0" width="100%">
+   <TR valign="top">
+      <TD>
+               </TD>
+      <TD align="right">
+   <A class="invisible" href="http://www.cs.uu.nl/docs/vakken/maa/2019-20/page_reinforcement_learning.php" target="main">Edition 2019-20</A>         Edition 2020-21      </TD>
+   </TR>
+</TABLE>
+
+<H1>Reinforcement learning</H1>
+
+<P><!-- description -->
+Reinforcement learning plays actions with the highest past payoff.  When computer scientists mention reinforcement learning, they usually mean multi-state reinforcement learning (as presented in, e.g., Sutton and Barto).
+Single-state reinforcement learning, however, has already interesting and theoretically important properties, especially when it is coupled to games (as in: &ldquo;game theory&rdquo;).  One such property is that if a constant-sum game has a unique pure-strategy equilibrium, and if both players adapt their play according to conventional single-state reinforcement learning, then the probability that they play these strategies converges to one. The same is true of the empirical frequencies.
+</P>
+<P>
+We will spend some time on the proof of Theorem 1 of (Beggs, 2005).  This theorem is essential to single-state proportional RL, but as Peyton Young already indicates, &ldquo;its proof is actually quite involved an relies on results in stochastic approximation theory&rdquo; (Peyton Young, 2004, p. 17).  Nevertheless, I think considering this proof is instructive.
+</P>
+
+<P>
+<TABLE border="0" cellpadding="0" cellspacing="3" width="100%">
+   <TR valign="top">
+      <TD width="50%">
+<H2>Presented by</H2> Lecturer.
+      </TD>
+      <TD>
+<H2>Slides</H2> <A href="slides/MAA_powerdot_ReinforcementLearning.pdf"><IMG border="0" SRC="icon-pdf.gif"></A>&nbsp;May  6, 2021.
+      </TD>
+      <TD>
+<H2>Screencast</H2> <A href="https://www.youtube.com/playlist?list=PL8AyDiByAbITVhCN50TIrZOrKVv5wRtYu" target="_blank">Youtube</A>
+      </TD>
+      <TD align="left">
+<H2>Assignment</H2> Not this year.
+      </TD>
+   </TR>
+</TABLE>
+</P>
+<H2>Literature</H2>
+<H5>Key</H5><!-- Key -->
+<P>
+<UL>
+<LI>&ldquo;Strategic Learning and its Limits&rdquo; <I>Peyton Young</I> (2004). Ch. 2 [<A href="http://scholar.google.nl.proxy.library.uu.nl/scholar?q=strategic+learning+and+its+limits+peyton+young+2004+ch+2" target="_blank">scholar</A>, <A href="http://www.cs.uu.nl/docs/vakken/maa/papers/strategic_learning_and_its_limits_h_peyton_young/Strategic Learning and its Limits - Peyton Young - 2004 - Ch. 2.pdf" target="_blank">lib</A>], the first half of this chapter.</LI>
+<LI>&ldquo;On the convergence of reinforcement learning&rdquo; <I>Beggs</I> (2005) [<A href="http://scholar.google.nl.proxy.library.uu.nl/scholar?q=on+the+convergence+of+reinforcement+learning+beggs+2005" target="_blank">scholar</A>, <A href="http://www.cs.uu.nl/docs/vakken/maa/papers/On the convergence of reinforcement learning - Beggs - 2005.pdf" target="_blank">lib</A>]</LI>
+
+</UL>
+</P>
+<H5>Support</H5><!-- Support -->
+<P>
+<OL>
+<LI>&ldquo;Stochastic Processes&rdquo; <I>Ross</I> (1996). Ch. 6 [<A href="http://scholar.google.nl.proxy.library.uu.nl/scholar?q=stochastic+processes+ross+1996+ch+6" target="_blank">scholar</A>, <A href="http://www.cs.uu.nl/docs/vakken/maa/papers/Stochastic Processes - Ross - 1996 - Ch. 6.pdf" target="_blank">lib</A>].  On Martingales.</LI>
+<LI>&ldquo;Predicting How People Play Games&rdquo; <I>Erev &amp; Roth</I> (1998) [<A href="http://scholar.google.nl.proxy.library.uu.nl/scholar?q=predicting+how+people+play+games+erev+roth+1998" target="_blank">scholar</A>, <A href="http://www.cs.uu.nl/docs/vakken/maa/papers/Predicting How People Play Games - Erev &amp; Roth - 1998.pdf" target="_blank">lib</A>]</LI>
+<LI>&ldquo;Designing Economic Agents that Act like Human Agents&rdquo; <I>W.B. Arthur</I> (1991) [<A href="http://scholar.google.nl.proxy.library.uu.nl/scholar?q=designing+economic+agents+that+act+like+human+agents+w+b+arthur+1991" target="_blank">scholar</A>, <A href="http://www.cs.uu.nl/docs/vakken/maa/papers/Designing Economic Agents that Act like Human Agents - W.B. Arthur - 1991.pdf" target="_blank">lib</A>]</LI>
+<LI>&ldquo;On Designing Economic Agents that Behave like Human Agents&rdquo; <I>W.B. Arthur</I> (1993) [<A href="http://scholar.google.nl.proxy.library.uu.nl/scholar?q=on+designing+economic+agents+that+behave+like+human+agents+w+b+arthur+1993" target="_blank">scholar</A>, <A href="http://www.cs.uu.nl/docs/vakken/maa/papers/On Designing Economic Agents that Behave like Human Agents - W.B. Arthur - 1993.pdf" target="_blank">lib</A>]</LI>
+<LI>&ldquo;Multi-agent Learning Dynamics; A Survey&rdquo; <I>Kaisers et al.</I> (2007) [<A href="http://scholar.google.nl.proxy.library.uu.nl/scholar?q=multi+agent+learning+dynamics+a+survey+kaisers+et+al+2007" target="_blank">scholar</A>, <A href="http://www.cs.uu.nl/docs/vakken/maa/papers/Multi-agent Learning Dynamics; A Survey - Kaisers et al. - 2007.pdf" target="_blank">lib</A>]</LI><LI><A href="http://incompleteideas.net/sutton/book/the-book-1st.html" target="_blank">Reinforcement Learning:
+An Introduction</A> by
+R.S. Sutton
+and A.G. Barto, 1st ed. (1998).  Ch. 2: &ldquo;<A href="http://incompleteideas.net/sutton/book/ebook/node14.html" target="_blank">Evaluative Feedback</A>&rdquo;.</LI><!--
+<LI>Reinforcement Learning: An Introduction, Barto and Sutton, 1998 [<A href="http://incompleteideas.net/sutton/book/the-book-1st.html" target="_blank">book</A>].  Ch. 2: Evaluative Feedback.</LI>
+-->
+</OL>
+</P>
+
+
+<H2>Demos</H2>
+<P>
+<OL type="i">
+<LI><A href="netlogo_learning_rate.html" target="_blank">Average vs. exponential decay learning</A>.</LI>
+<LI><A href="netlogo_multiarmed_bandit.html" target="_blank">Multi-armed bandit</A>.</LI>
+</OL>
+</P>
+
+
+
+<P>
+<FORM>
+<TABLE class="footer" cellpadding="0" cellspacing="0" width="100%">
+   <TR valign="top">
+      <TD>
+         Page last modified at Mon, 10 May 2021 10:35:19 +02001      </TD>
+            <TD align="right">
+         <A href="mailto:&quot;Gerard Vreeswijk&quot; &lt;gv@cs.uu.nl&gt;?subject=/science/wwwprojects/cs-www/www/docs/vakken/maa/current/page_reinforcement_learning.php">Comments welcome</A>
+      </TD>
+         </TR>
+</TABLE>
+</FORM>
+</P>
+</BODY>
+
+<!-- Mirrored from www.cs.uu.nl/docs/vakken/maa/current/page_reinforcement_learning.php by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Jun 2021 07:40:28 GMT -->
+</HTML>
